@@ -1,5 +1,6 @@
 import { scoring } from "./scoring.js";
 // TASK #2: Import the Store class from the store.js file
+import { Store } from "./store.js";
 
 // Given shuffle algorithm for picking words in a bag
 function shuffle(array) {
@@ -28,8 +29,17 @@ export class Game {
   constructor() {
     // TASK #2: Initialize the game board and bag of tiles if they are not in
     //          the store, otherwise load them from the store.
-    this.#bag = this.#initBag();
-    this.#grid = this.#initGrid();
+    let store = Store.store();
+
+    if (store.has("bag") && store.has("grid")) {
+      this.#bag = store.get("bag");
+      this.#grid = store.get("grid");
+    } else {
+      this.#bag = this.#initBag();
+      this.#grid = this.#initGrid();
+      store.set("bag", this.#bag);
+      store.set("grid", this.#grid);
+    }
   }
 
   #initBag() {
