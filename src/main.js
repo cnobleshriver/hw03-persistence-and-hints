@@ -3,6 +3,7 @@ import { Game } from "./game.js";
 import { Rack } from "./rack.js";
 // TASK #6: Import the scrabbleUtils module from the scrabbleUtils.js
 // file.
+import { canConstructWord, isValid, constructWord } from "./scrabbleUtils.js";
 
 // UI Components
 const boardGridElement = document.getElementById("board");
@@ -65,6 +66,10 @@ if (playButtonElement) {
     //   was entered.
     // - If the word can be constructed from the available tiles, continue to
     //   the next step; otherwise return.
+    if (!canConstructWord(rack.getAvailableTiles(), word)) {
+      alert(`The word "${word}" cannot be constructed from the available tiles.`);
+      return;
+    }
 
     // TASK #6 (Step 2): Check if the word is valid
     // - Check if the word is a valid word using the `isValid` function from the
@@ -75,6 +80,10 @@ if (playButtonElement) {
     // - If the word is valid, continue to the next step; otherwise return
     //
     // Modify this assignment by following the instructions above
+    if (!isValid(word)) {
+      alert(`"${word}" is not a valid word.`);
+      return;
+    }
     const validWord = word;
 
     // Try to play the word on the board.
@@ -93,11 +102,21 @@ if (playButtonElement) {
     //   word as arguments and returns an array of tiles that can be used to
     //   construct the word.
     // - Store the result in a variable named `playableWord`.
+    let usedTiles = constructWord(rack.getAvailableTiles(), word);
+    for (let tile in usedTiles) {
+      rack.removeTile(tile);
+    }
+    rack.render(rackElement);
+
     const playableWord = word;
 
     game.render(boardGridElement);
     // TASK #6 (Step 4): Update the UI elements
     // - Clear the word, x, and y input elements.
+    document.getElementById("word").value = "";
+    document.getElementById("x").value = "";
+    document.getElementById("y").value = "";
+
     // TASK #7 (Step 5): Clear the hint UI element
     // - Clear the hint display UI element (ID is 'hint')
   });
