@@ -102,9 +102,9 @@ if (playButtonElement) {
 // TASK #3: Add an event listener to the reset button to reset the game board.
 //
 // Add your implementation here:
-resetButtonElement.addEventListener("click" , () => {
-  
-})
+resetButtonElement.addEventListener("click", () => {
+  game.reset();
+});
 
 // TASK #7 (Step 4): Add an event listener to the help button to get a hint.
 //
