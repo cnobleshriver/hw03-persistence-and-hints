@@ -1,5 +1,6 @@
 import { Game } from "./game.js";
 // TASK #5: Import the Rack class from the rack.js file.
+import { Rack } from "./rack.js";
 // TASK #6: Import the scrabbleUtils module from the scrabbleUtils.js
 // file.
 
@@ -15,6 +16,7 @@ const resetButtonElement = document.getElementById("reset");
 //   `rackElement`.
 // - The rack element has an id of 'rack'.
 // - Use the `getElementById` method to get the rack element.
+const rackElement = document.getElementById("rack");
 
 // TASK #7 (Step 3): Get the help button element from the DOM.
 // - Get the help button from the DOM and store it in a variable named
@@ -29,6 +31,10 @@ const game = new Game();
 // - Create a new instance of the Rack class and store it in a variable named `rack`.
 // - Take 7 tiles from the game bag and add them to the rack.
 // - Render the rack to the rackElement.
+const rack = new Rack();
+rack.takeFromBag(7, game);
+rack.render(rackElement);
+
 
 game.render(boardGridElement);
 
