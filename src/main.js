@@ -3,7 +3,7 @@ import { Game } from "./game.js";
 import { Rack } from "./rack.js";
 // TASK #6: Import the scrabbleUtils module from the scrabbleUtils.js
 // file.
-import { canConstructWord, isValid, constructWord } from "./scrabbleUtils.js";
+import { canConstructWord, isValid, constructWord, bestPossibleWords } from "./scrabbleUtils.js";
 
 // UI Components
 const boardGridElement = document.getElementById("board");
@@ -24,6 +24,7 @@ const rackElement = document.getElementById("rack");
 //   `helpButtonElement`.
 // - The button element has an id of 'help'.
 // - Use the `getElementById` method to get the help button element.
+const helpButtonElement = document.getElementById("help");
 
 // Game Board
 const game = new Game();
@@ -119,6 +120,7 @@ if (playButtonElement) {
 
     // TASK #7 (Step 5): Clear the hint UI element
     // - Clear the hint display UI element (ID is 'hint')
+    document.getElementById("hint").innerText = "";
   });
 } else {
   throw new Error("Could not find play button");
@@ -142,3 +144,8 @@ resetButtonElement.addEventListener("click", () => {
 //    the ID 'hint'.
 //
 // Add your implementation here:
+helpButtonElement.addEventListener("click", () => {
+  let bestPossible = bestPossibleWords(rack.getAvailableTiles())
+  let randomWord = bestPossible[Math.floor(Math.random() * bestPossible.length)];
+  document.getElementById("hint").innerText = randomWord;
+});

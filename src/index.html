@@ -1,28 +1,30 @@
 <!doctype html>
 <html>
-  <head>
-    <title>Scrabble</title>
-    <script type="module" src="main.js" defer></script>
-    <link rel="stylesheet" href="main.css" />
-  </head>
-  <body>
-    <div id="board"></div>
-    <div id="controls">
-      <label for="word">Word: </label><input type="text" id="word" />
-      <label for="x">x: </label><input type="number" id="x" min="1" max="15" />
-      <label for="y">y: </label><input type="number" id="y" min="1" max="15" />
-      <select id="direction">
-        <option value="horizontal">Horizontal</option>
-        <option value="vertical">Vertical</option>
-      </select>
-      <input type="button" value="Play!" id="play" />
-      <!-- TASK #3: Add the reset button.
+
+<head>
+  <title>Scrabble</title>
+  <script type="module" src="main.js" defer></script>
+  <link rel="stylesheet" href="main.css" />
+</head>
+
+<body>
+  <div id="board"></div>
+  <div id="controls">
+    <label for="word">Word: </label><input type="text" id="word" />
+    <label for="x">x: </label><input type="number" id="x" min="1" max="15" />
+    <label for="y">y: </label><input type="number" id="y" min="1" max="15" />
+    <select id="direction">
+      <option value="horizontal">Horizontal</option>
+      <option value="vertical">Vertical</option>
+    </select>
+    <input type="button" value="Play!" id="play" />
+    <!-- TASK #3: Add the reset button.
              - The button must have the text "Reset".
              - The button must have the id "reset-button".       
       -->
-      <input type="button" value="Reset" id="reset">
+    <input type="button" value="Reset" id="reset">
 
-      <!-- TASK #7 (Step 1): Add a div with the id "hint-wrapper".
+    <!-- TASK #7 (Step 1): Add a div with the id "hint-wrapper".
              - This div will be used to display a hint if the player requests
                a hint.
              - Each time the player requests a hint, it will display a random
@@ -30,16 +32,17 @@
              - If the player chooses to play the word, the hint should be
                cleared from this div.
       -->
-    </div>
+    <input type="button" value="Help!" id="help">
+  </div>
 
-    <!-- TASK #5 Part 3: Add a div with the id "rack".
+  <!-- TASK #5 Part 3: Add a div with the id "rack".
              - This div will contain the tiles that the player can play.
              - The tiles will be added to this div by the JavaScript
                code.       
       -->
-    <div id="rack"></div>
+  <div id="rack"></div>
 
-    <!-- TASK #7 (Step 2): Add a div with the id "hint-wrapper".
+  <!-- TASK #7 (Step 2): Add a div with the id "hint-wrapper".
              - This div will be used to display a hint if the player requests
                a hint.
              - Each time the player requests a hint, it will display a random
@@ -47,5 +50,8 @@
              - If the player chooses to play the word, the hint should be
                cleared from this div.
       -->
-  </body>
+
+  <div id="hint-wrapper">Hint: <span id="hint"></span></div>
+</body>
+
 </html>
