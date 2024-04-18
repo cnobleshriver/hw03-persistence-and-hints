@@ -29,6 +29,7 @@ export class Game {
   constructor() {
     // TASK #2: Initialize the game board and bag of tiles if they are not in
     //          the store, otherwise load them from the store.
+
     const store = Store.store();
 
     if (store.has("bag") && store.has("grid")) {
@@ -102,8 +103,8 @@ export class Game {
     // TASK #3: Reset the game board and bag of tiles, and save them to the
     // store.
     // Add your implementation here.
-    this.#bag = this.#initBag;
-    this.#grid = this.#initGrid;
+    this.#bag = this.#initBag();
+    this.#grid = this.#initGrid();
     Store.store().set("bag", this.#bag);
     Store.store().set("grid", this.#grid);
   }
@@ -160,7 +161,7 @@ export class Game {
       );
     }
     // TASK #2: Save the updated grid to the store
-    Store.store().set("grid", this.#grid);
+    Store.store().set("grid", this.#grid)
   }
 
   /**

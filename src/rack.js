@@ -91,11 +91,11 @@ export class Rack {
     //       tiles.
     // - Return true.
     let tiles = this.getAvailableTiles();
-    if (letter in tiles) {
-      if (tiles[letter] === 1) {
-        delete this.available[letter];
+    if (tile in tiles) {
+      if (tiles[tile] === 1) {
+        delete this.available[tile];
       } else {
-        this.available[letter] -= 1;
+        this.available[tile] -= 1;
       }
     } else {
       return false;

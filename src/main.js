@@ -102,13 +102,13 @@ if (playButtonElement) {
     //   word as arguments and returns an array of tiles that can be used to
     //   construct the word.
     // - Store the result in a variable named `playableWord`.
-    let usedTiles = constructWord(rack.getAvailableTiles(), word);
-    for (let tile in usedTiles) {
-      rack.removeTile(tile);
+    const playableWord = constructWord(rack.getAvailableTiles(), word);
+    let n = playableWord.length;
+    for (let i = 0; i < n; i++) {
+      rack.removeTile(playableWord[i]);
     }
+    rack.takeFromBag(n, game);
     rack.render(rackElement);
-
-    const playableWord = word;
 
     game.render(boardGridElement);
     // TASK #6 (Step 4): Update the UI elements
@@ -129,6 +129,7 @@ if (playButtonElement) {
 // Add your implementation here:
 resetButtonElement.addEventListener("click", () => {
   game.reset();
+  game.render(boardGridElement);
 });
 
 // TASK #7 (Step 4): Add an event listener to the help button to get a hint.
