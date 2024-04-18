@@ -148,7 +148,7 @@ resetButtonElement.addEventListener("click", () => {
 //
 // Add your implementation here:
 helpButtonElement.addEventListener("click", () => {
-  let bestPossible = bestPossibleWords(rack.getAvailableTiles())
+  let bestPossible = bestPossibleWords(rack.getAvailableTiles());
   let randomWord = bestPossible[Math.floor(Math.random() * bestPossible.length)];
   document.getElementById("hint").innerText = randomWord;
 });
