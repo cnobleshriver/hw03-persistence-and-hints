@@ -1,4 +1,5 @@
 // TASK #8: Import the Store class from the store.js file.
+import { Store } from "./store.js";
 
 /**
  * Represents a rack of tiles for the game of Scrabble.
@@ -13,7 +14,14 @@ export class Rack {
      * the tiles, and the values are the number of those tiles available.
      * @type {Object.<string, number>}
      */
-    this.available = {};
+    const store = Store.store();
+
+    if (store.has("rack")) {
+      this.available = store.get("rack");
+    } else {
+      this.available = {};
+      store.set("rack", this.available);
+    }
 
     /**
      * The total number of tiles available on the rack.
@@ -100,6 +108,7 @@ export class Rack {
     } else {
       return false;
     }
+    Store.store().set("rack", this.available);
     return true;
   }
 
@@ -122,6 +131,7 @@ export class Rack {
       }
     }
     // TASK #8: Store the updated rack in the local storage
+    Store.store().set("rack", this.getAvailableTiles());
   }
 
   /**
@@ -131,5 +141,6 @@ export class Rack {
     this.available = {};
     this.count = 0;
     // TASK #8: Remove the rack from the local storage
+    Store.store().remove("rack");
   }
 }

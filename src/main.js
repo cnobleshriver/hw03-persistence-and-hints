@@ -131,6 +131,9 @@ if (playButtonElement) {
 // Add your implementation here:
 resetButtonElement.addEventListener("click", () => {
   game.reset();
+  rack.reset();
+  rack.takeFromBag(7, game);
+  rack.render(rackElement);
   game.render(boardGridElement);
 });
 

@@ -29,7 +29,6 @@ export class Game {
   constructor() {
     // TASK #2: Initialize the game board and bag of tiles if they are not in
     //          the store, otherwise load them from the store.
-
     const store = Store.store();
 
     if (store.has("bag") && store.has("grid")) {
